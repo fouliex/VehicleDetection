@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b58cb72c-0841-4679-ab3a-540065f7e731" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Far/image0000.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Far/image0001.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Far/image0002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Far/image0003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Far/image0004.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Far/image0005.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Left/image0009.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Left/image0010.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Left/image0011.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Left/image0012.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Left/image0013.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles/GTI_Left/image0014.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vehicles/GTI_MiddleClose/image0000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vehicles/GTI_MiddleClose/image0001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vehicles/GTI_MiddleClose/image0002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vehicles/GTI_MiddleClose/image0003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vehicles/GTI_MiddleClose/image0004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vehicles/GTI_MiddleClose/image0005.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="CarND-Vehicle-Detection.iws" />
@@ -50,11 +42,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="md" value="107" />
+          <entry key="txt" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="107" />
+          <entry key="PLAIN_TEXT" value="33" />
         </counts>
       </usages-collector>
     </session>
@@ -69,7 +63,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="345">
-                <caret line="23" column="79" selection-start-line="23" selection-start-column="79" selection-end-line="23" selection-end-column="79" />
+                <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
               </first_editor>
               <second_editor />
             </state>
@@ -177,6 +171,14 @@
       <option name="presentableId" value="Default" />
       <updated>1541452741637</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add 5 GTI_FAR and GTI_Left images">
+      <created>1542340779178</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1542340779178</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -212,13 +214,17 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add 5 GTI_FAR and GTI_Left images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add 5 GTI_FAR and GTI_Left images" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/examples/george.py" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="345">
-            <caret line="23" column="79" selection-start-line="23" selection-start-column="79" selection-end-line="23" selection-end-column="79" />
+            <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
           </first_editor>
           <second_editor />
         </state>
