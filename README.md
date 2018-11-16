@@ -152,3 +152,26 @@ def train_with_svc(X_train,y_train):
     svc.fit(X_train, y_train)
     return svc
 ```
+# Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
+ A Sliding Window search is used to speed up the process of searching vehicles in the video.
+ The limit search is set to 400 and 656, removing all scenery that are not needed.
+* `ystart` = 400
+* `ystop` = 656
+
+Due to the fact that the  Histogram of Oriented Gradients (HOG) is slow,
+each features for each images is calculated one and saved in memory.In
+addition for each prediction block, the HOG cells is called and combined
+with the spatial and color histogram features.
+
+
+
+
+
+# Discussion
+Support Vector Machines works well in complicated domains where there is
+clear margin of separation but don't perform well in very large data sets
+because the training time happens to be cubic in the size of the data set.
+They also don't work well with lots of noise.Therefore when the class are
+overlapping we have to count independent evidence.That's where then a Naive
+Bayes classifier would be better or a Fully Convolutional Network such as
+the one use in this project,[Deep Learning Drone Simulator](https://github.com/fouliex/DeepLearningDroneSimulator)
