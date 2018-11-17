@@ -159,14 +159,6 @@ def train_with_svc(X_train,y_train):
 * `ystart` = 400
 * `ystop` = 656
 
-Due to the fact that the  Histogram of Oriented Gradients (HOG) is slow,
-each features for each images is calculated one and saved in memory.In
-addition for each prediction block, the HOG cells is called and combined
-with the spatial and color histogram features.
-
-
-
-
 
 # Discussion
 Support Vector Machines works well in complicated domains where there is
