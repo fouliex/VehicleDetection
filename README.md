@@ -3,7 +3,7 @@
 [image_0]: ./misc/vehicleDetection.gif
 # Vehicle Detection
 ![alt text][image_0] 
-In this project, your goal is to write a software pipeline to detect vehicles in a video (start with the test_video.mp4 and later implement on full project_video.mp4), but the main output or product we want you to create is a detailed writeup of the project.  Check out the [writeup template](https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup.  
+In this project, the goal is to write a software pipeline that detect vehicles in a video.  
 
 
 
@@ -154,15 +154,28 @@ def train_with_svc(X_train,y_train):
     return svc
 ```
 # Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
+## Sliding Window
+
  A Sliding Window search is used to speed up the process of searching vehicles in the video.
  The limit search is set to 400 and 656, removing all scenery that are not needed.
 * `ystart` = 400
 * `ystop` = 656
 
-Due to the fact that the  Histogram of Oriented Gradients (HOG) is slow,
-each features for each images is calculated one and saved in memory.In
-addition for each prediction block, the HOG cells is called and combined
-with the spatial and color histogram features.
+## Heat Maps
+Here is the heat map for all test images
+### Test Image 1
+![Test Image 1](./misc/test1.png)
+### Test Image 2
+![Test Image 2](./misc/test2.png)
+### Test Image 3
+![Test Image 3](./misc/test3.png)
+### Test Image 4
+![Test Image 4](./misc/test4.png)
+### Test Image 5
+![Test Image 5](./misc/test5.png)
+### Test Image 6
+![Test Image 6](./misc/test6.png)
+
 
 
 
