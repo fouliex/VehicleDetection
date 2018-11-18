@@ -3,10 +3,7 @@
 [image_0]: ./misc/vehicleDetection.gif
 # Vehicle Detection
 ![alt text][image_0] 
-In this project, the goal is to write a software pipeline that detect vehicles in a video.  
-
-
-
+ 
 The Project
 ---
 
