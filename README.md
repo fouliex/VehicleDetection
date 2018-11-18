@@ -263,7 +263,8 @@ def extract_vehicle_features(img, svc, x_scaler):
 ```
 
 
-
+# Video
+The video is located [here](./video)
 
 # Discussion
 Support Vector Machines works well in complicated domains where there is
