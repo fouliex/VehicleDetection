@@ -158,7 +158,12 @@ def train_with_svc(X_train,y_train):
 * `ystart` = 400
 * `ystop` = 656
 
-## Heat Maps
+For more information about Sliding Window see [Advance Lane Finding](https://github.com/fouliex/AdvancedLaneFinding)
+
+## Extract Vehicle features
+Heat maps is use to consolidate prediction results. For each positive prediction, the region predicted square is increased
+by 1. In addition, by applying a detection threshold of 15, we filtered all the false positives area out.
+
 Here is the heat map for all test images
 ### Test Image 1
 ![Test Image 1](./misc/test1.png)
@@ -173,7 +178,89 @@ Here is the heat map for all test images
 ### Test Image 6
 ![Test Image 6](./misc/test6.png)
 
+## Extract vehicles Features Source Code
+```python
+def extract_vehicle_features(img, svc, x_scaler):
+    """
+    Extract features using hog sub-sampling and make predictions
+    :param img: 
+    :param svc: 
+    :param x_scaler: 
+    :return: 
+    """
+    y_start = 400
+    y_stop = 656
+    scale = 1.5
 
+    orient = 9
+    pix_per_cell = 8
+    cell_per_block = 2
+    spatial_size = (32, 32)
+    hist_bins = 32
+    heat_map = np.zeros_like(img[:, :, 0])
+
+    img_to_search = img[y_start:y_stop, :, :]
+    vehicles_trans_to_search = img_to_search
+    if scale != 1:
+        imshape = vehicles_trans_to_search.shape
+        vehicles_trans_to_search = cv2.resize(vehicles_trans_to_search, (np.int(imshape[1] / scale), np.int(imshape[0] / scale)))
+
+    ch1 = vehicles_trans_to_search[:, :, 0]
+    ch2 = vehicles_trans_to_search[:, :, 1]
+    ch3 = vehicles_trans_to_search[:, :, 2]
+
+    # Define blocks and steps as above
+    number_of_x_blocks = (ch1.shape[1] // pix_per_cell) - cell_per_block + 1
+    number_of_y_blocks = (ch1.shape[0] // pix_per_cell) - cell_per_block + 1
+
+    # 64 was the original sampling rate, with 8 cells and 8 pix per cell
+    window = 64
+    nblocks_per_window = (window // pix_per_cell) - cell_per_block + 1
+    cells_per_step = 2  # Instead of overlap, define how many cells to step
+    nxsteps = (number_of_x_blocks - nblocks_per_window) // cells_per_step
+    nysteps = (number_of_y_blocks - nblocks_per_window) // cells_per_step
+
+    # Compute individual channel HOG features for the entire image
+    hog1 = get_hog_features(ch1, orient, pix_per_cell, cell_per_block, feature_vec=False)
+    hog2 = get_hog_features(ch2, orient, pix_per_cell, cell_per_block, feature_vec=False)
+    hog3 = get_hog_features(ch3, orient, pix_per_cell, cell_per_block, feature_vec=False)
+
+    for xb in range(nxsteps):
+        if (xb * cells_per_step * pix_per_cell * scale) > 700:
+            for yb in range(nysteps):
+                ypos = yb * cells_per_step
+                xpos = xb * cells_per_step
+                # Extract HOG for this patch
+                hog_feat1 = hog1[ypos:ypos + nblocks_per_window, xpos:xpos + nblocks_per_window].ravel()
+                hog_feat2 = hog2[ypos:ypos + nblocks_per_window, xpos:xpos + nblocks_per_window].ravel()
+                hog_feat3 = hog3[ypos:ypos + nblocks_per_window, xpos:xpos + nblocks_per_window].ravel()
+                hog_features = np.hstack((hog_feat1, hog_feat2, hog_feat3))
+
+                xleft = xpos * pix_per_cell
+                ytop = ypos * pix_per_cell
+
+                # Extract the image patch
+                subimg = cv2.resize(vehicles_trans_to_search[ytop:ytop + window, xleft:xleft + window], (64, 64))
+
+                # Get color features
+                spatial_features = bin_spatial(subimg, size=spatial_size)
+                hist_features = color_hist(subimg, nbins=hist_bins)
+
+                # Scale features and make a prediction
+                test_features = x_scaler.transform(
+                    np.hstack((spatial_features, hist_features, hog_features)).reshape(1, -1))
+                test_prediction = svc.predict(test_features)
+
+                if test_prediction == 1:
+                    x_box_left = np.int(xleft * scale)
+                    y_top_draw = np.int(ytop * scale)
+                    win_draw = np.int(window * scale)
+                    if x_box_left > 700:
+                        heat_map[y_top_draw + y_start:y_top_draw + y_start + win_draw, x_box_left:x_box_left + win_draw] += 1
+
+    return heat_map
+
+```
 
 
 
